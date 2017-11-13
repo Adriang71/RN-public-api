@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, ScrollView, Button, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, ScrollView, TouchableHighlight} from 'react-native';
 
 const Category = [
     'All',
@@ -77,7 +77,7 @@ export default class Menu extends Component {
                     key={item}
                     onPress={() => this.moveTo(item)}
                     underlayColor="white">
-                      <Text>{item}</Text>
+                      <Text style={styles.menuItem}>{item}</Text>
                   </TouchableHighlight>
               );
           })}
@@ -89,11 +89,11 @@ export default class Menu extends Component {
 const styles = StyleSheet.create({
   menuList: {
     padding: 20,
-    backgroundColor: 'skyblue',
-    borderBottomWidth: 1,
-    borderBottomColor: 'steelblue',
+    backgroundColor: '#212121',
   },
   menuItem: {
-
+    margin: 10,
+    color: '#7E57C2',
+    fontSize: 20,
   }
 });
