@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, TouchableHighlight} from 'react-native';
+import { StyleSheet, Text, ScrollView, Button, TouchableHighlight} from 'react-native';
 
 const Category = [
     'All',
@@ -70,7 +70,7 @@ export default class Menu extends Component {
 
   render() {
     return(
-      <View style={styles.listItem}>
+      <ScrollView style={styles.menuList}>
           {Category.map(item => {
               return(
                   <TouchableHighlight
@@ -81,16 +81,19 @@ export default class Menu extends Component {
                   </TouchableHighlight>
               );
           })}
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  listItem: {
+  menuList: {
     padding: 20,
     backgroundColor: 'skyblue',
     borderBottomWidth: 1,
     borderBottomColor: 'steelblue',
   },
+  menuItem: {
+
+  }
 });

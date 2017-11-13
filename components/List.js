@@ -35,7 +35,7 @@ export default class List extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'ApiList',
+    title: 'Api List',
   };
 
   filterList(categoryName) {
@@ -93,10 +93,10 @@ const styles = StyleSheet.create({
   },
   name: {
     fontSize: 20,
-    marginBottom: 5
+    marginBottom: 5,
   },
   goText: {
-    color: '#03A9F4',
+    color: '#7E57C2',
     fontSize: 14
   }
 });
