@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableHighlight} from 'react-native';
 
 const Category = [
+    'All',
     'Animals',
     'Anime',
     'Anti-Malware',
@@ -52,36 +53,44 @@ const Category = [
     'Weather',
 ];
 
-
 export default class Menu extends Component {
-    constructor(props) {
-        super(props);
-        this.state = 'All';
-        this._onPressButton = this._onPressButton.bind(this);
-        this._onPressButton = this._onPressButton.bind(this);
-    }
+  constructor(props) {
+    super(props);
+    this.moveTo = this.moveTo.bind(this);
+  }
 
-    _onPressButton() {
-        console.log('work');
-    }
+  static navigationOptions = {
+    title: 'Category',
+  };
 
-    _createMenuItems() {
-        Category.map(item => {
-            return (
-                <TouchableHighlight onPress={this._onPressButton} underlayColor="white">
-                  <View>
-                    <Text>{item}</Text>
-                  </View>
-                </TouchableHighlight>
-            );
-        });
-    }
 
-    render() {
-        return(
-            <View>
-                <Text></Text>
-            </View>
-        );
-    }
+  moveTo(category) {
+    this.props.navigation.navigate('Main', { category });
+  }
+
+  render() {
+    return(
+      <View style={styles.listItem}>
+          {Category.map(item => {
+              return(
+                  <TouchableHighlight
+                    key={item}
+                    onPress={() => this.moveTo(item)}
+                    underlayColor="white">
+                      <Text>{item}</Text>
+                  </TouchableHighlight>
+              );
+          })}
+      </View>
+    );
+  }
 }
+
+const styles = StyleSheet.create({
+  listItem: {
+    padding: 20,
+    backgroundColor: 'skyblue',
+    borderBottomWidth: 1,
+    borderBottomColor: 'steelblue',
+  },
+});
