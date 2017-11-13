@@ -72,6 +72,7 @@ export default class List extends React.Component {
               key={item['Api']}
               style={styles.listItem}
               itemData={item} />}
+          keyExtractor={(item, index) => index}
         />
     );
   }

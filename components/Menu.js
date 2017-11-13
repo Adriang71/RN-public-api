@@ -88,11 +88,11 @@ export default class Menu extends Component {
 
 const styles = StyleSheet.create({
   menuList: {
-    padding: 20,
     backgroundColor: '#212121',
+    paddingBottom: 180
   },
   menuItem: {
-    margin: 10,
+    margin: 20,
     color: '#7E57C2',
     fontSize: 20,
   }
