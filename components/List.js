@@ -2,14 +2,27 @@ import React from 'react';
 import { StyleSheet, Text, View, FlatList, Linking } from 'react-native';
 import sd from '../appStaticData.js'
 
+const isAuthInItem = (text) => (text !== null ? text : 'No');
+
 const ListItem = (props) => (
   <View style={styles.listItem}>
-    <Text>{props.itemData['API']}</Text>
-    <Text>{props.itemData['Auth']}</Text>
-    <Text>{props.itemData['Category']}</Text>
-    <Text>{props.itemData['Description']}</Text>
-    <Text>{props.itemData['HTTPS']}</Text>
-    <Text onPress={() => Linking.openURL(props.itemData['Link'])}>Go to website</Text>
+
+    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+      <Text style={[styles.item, styles.name]}>{props.itemData['API']}</Text>
+      <Text style={styles.item}>{props.itemData['Category']}</Text>
+    </View>
+
+    <Text style={styles.item}>{`Auth: ${isAuthInItem(props.itemData['Auth'])}`}</Text>
+    <Text style={styles.item}>{props.itemData['Description']}</Text>
+    <Text style={styles.item}>{props.itemData['HTTPS']}</Text>
+
+    <View style={{flex: 1, flexDirection: 'row', justifyContent: 'flex-end'}}>
+      <Text
+        style={styles.goText}
+        onPress={() => Linking.openURL(props.itemData['Link'])}
+        >Go to website</Text>
+    </View>
+
   </View>
 );
 
@@ -51,21 +64,39 @@ export default class List extends React.Component {
 
     return (
       <FlatList
+          style={styles.list}
           data={list}
-          renderItem={({item}) => <ListItem style={styles.listItem} itemData={item} />}
+          renderItem={
+            ({item}) =>
+            <ListItem
+              key={item['Api']}
+              style={styles.listItem}
+              itemData={item} />}
         />
     );
   }
 }
 
 const styles = StyleSheet.create({
+  list: {
+    backgroundColor: '#212121',
+  },
   listItem: {
     width: '100%',
-    backgroundColor: 'skyblue',
-    borderBottomWidth: 1,
-    borderBottomColor: 'steelblue',
+    padding: 20,
+    backgroundColor: '#212121',
+    borderBottomWidth: 0.5,
+    borderBottomColor: '#7E57C2',
   },
   item: {
-    color: '#fff',
+    color: '#fff'
+  },
+  name: {
+    fontSize: 20,
+    marginBottom: 5
+  },
+  goText: {
+    color: '#03A9F4',
+    fontSize: 14
   }
 });
