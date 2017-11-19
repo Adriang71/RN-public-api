@@ -45,10 +45,6 @@ export default class List extends React.Component {
   checkCategory() {
     const { navigation } = this.props;
 
-    // if (this._list != null) { // if this._list is not undefined
-    //   this._list.scrollTo({y:0, x:0,animated: true});
-    // }
-
     if (navigation.state.hasOwnProperty('params') &&
         navigation.state.params.hasOwnProperty('category')) {
 
@@ -70,7 +66,6 @@ export default class List extends React.Component {
       <FlatList
           style={styles.list}
           data={list}
-          ref={component => this._list = component}
           renderItem={
             ({item}) =>
             <ListItem

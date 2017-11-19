@@ -1,7 +1,7 @@
 {
    "expo": {
-    "name": "piblic.api.io",
-    "icon": "./path/to/your/app-icon.png",
+    "name": "Public api finder",
+    "icon": "./app-icon.png",
     "version": "1.0.0",
     "slug": "public-api-finder",
     "sdkVersion": "22.0.0",
